@@ -126,6 +126,8 @@ public class BulkProcessorExample {
 
             client.admin().indices().prepareUpdateSettings(index).setSettings(Settings.settingsBuilder().put("index.translog.flush_threshold_size", "1GB").build()).execute().actionGet();
 
+            client.admin().indices().prepareUpdateSettings(index).setSettings(Settings.settingsBuilder().put("indices.memory.index_buffer_size", "50%").build()).execute().actionGet();
+
 
             client.admin().indices().prepareCreate(index).setSettings(settings).execute().actionGet();
 
